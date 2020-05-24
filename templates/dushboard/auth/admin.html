@@ -1,0 +1,41 @@
+<%inherit file="../base.html"/>
+<%! from django.shortcuts import reverse %>
+<%def name ="content()">
+<%
+    prv_page ='{}?page={}'.format(reverse('dushboard_admin'),page_num-1)
+    next_page ='{}?page={}'.format(reverse('dushboard_admin'),page_num+1)
+%>
+<h1>管理员模块</h1>
+% if page_num>1:
+    <a href="${prv_page}">上一页</a>
+% endif
+% if page_num < total:
+  <a href="${next_page}">下一页</a>
+% endif
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <td>用户名</td>
+         <td>状态</td>
+         <td>创建时间</td>
+         <td>编辑</td>
+    </tr>
+    </thead>
+    <tbody>
+            % for user in Users:
+    <tr>
+
+        <td>${user.username}</td>
+         <td>${user.is_superuser}</td>
+         <td>${user.date_joined}</td>
+         % if user.is_superuser:
+            <td><a href="${reverse('dushboard_updateadminstatus')}?status=off">取消管理员</a></td>
+         % else:
+            <td><a href="${reverse('dushboard_updateadminstatus')}?status=on">成为管理员</a></td>
+        % endif
+
+    </tr>
+            %endfor
+    </tbody>
+</table>
+</%def>

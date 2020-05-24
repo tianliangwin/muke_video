@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<%! from django.shortcuts import reverse %>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+      <link  rel="stylesheet" href="/static/dushboard/css/bootstrap.min.css">
+     <link  rel="stylesheet" href="/static/dushboard/css/login.css">
+</head>
+<body>
+<%
+    action = reverse('dushboard_login') if not to else '{}?to={}'.format(reverse('dushboard_login'),to)
+%>
+<form class="form-horizontal edit-area" action="${action}" method="POST">
+    ${csrf_token}
+  <div class="form-group">
+    <div class="col-sm-12">
+      <input type="text" name="username" class="form-control"  placeholder="用户名"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-12">
+      <input type="password" name="password" class="form-control" placeholder="密码"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">登录</button> ${error}
+    </div>
+  </div>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>${self.title()}</title>
+    <link  rel="stylesheet" href="/static/dushboard/css/bootstrap.min.css">
+    <link  rel="stylesheet" href="/static/dushboard/css/base.css">
+    ${self.css()}
+</head>
+<body>
+<%! from django.shortcuts import reverse %>
+<%include file="nav.html" />
+<div class="base-area">
+<ul class="side-menu">
+    <li><a href="${reverse('dushboard_admin')}">管理员</a></li>
+    <li>用户</li>
+    <li><a href="${reverse('externa_video')}">外部视频</a></li>
+    <li>自定义视频</li>
+</ul>
+<div class="base-content">
+        ${self.content()}
+</div>
+
+</div>
+</body>
+
+<script src="/static/dushboard/js/jquery-3.5.1.min.js" ></script>
+<script src="/static/dushboard/js/bootstrap.min.js" ></script>
+${self.js()}
+</html>
+
+<%def name ="title()"></%def>
+<%def name ="css()"></%def>
+<%def name ="content()"></%def>
+<%def name ="js()"></%def>

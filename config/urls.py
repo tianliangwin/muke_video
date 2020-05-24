@@ -22,5 +22,5 @@ from app.dushboard import  urls as dushbordurls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(clienturls.urlpatterns)),
-    path('', include(dushbordurls.urlpatterns)),
+    path('dushboard/', include(dushbordurls.urlpatterns)),
 ]
